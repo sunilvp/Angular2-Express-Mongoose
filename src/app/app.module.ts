@@ -8,7 +8,7 @@ import { FormsModule,
 import { AppComponent }         from './app.component';
 import { HomeComponent }        from './home.component';
 import { AboutComponent }       from './about.component';
-import { CatService }           from './cat.service';
+import { TodoService }           from './todo.service';
 
 import { enableProdMode }       from '@angular/core';
 
@@ -28,7 +28,7 @@ const routing = RouterModule.forRoot([
     declarations: [ AppComponent,
     			    AboutComponent,
     			    HomeComponent ],
-    providers: [ CatService ],
+    providers: [ TodoService ],
     bootstrap: [ AppComponent ]
 })
 

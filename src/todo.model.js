@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 
 var todoSchema = mongoose.Schema({
-    Priority: String,
-    Topic: String,
-    Summary: String
+    priority: String,
+    topic: String,
+    summary: String
 });
 
 var Todo = mongoose.model('Todo', todoSchema);

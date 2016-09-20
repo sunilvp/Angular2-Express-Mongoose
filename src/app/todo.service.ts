@@ -4,7 +4,7 @@ import { Http, Headers,
 
 @Injectable()
 
-export class CatService {
+export class TodoService {
 
     private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
     private options = new RequestOptions({ headers: this.headers });
@@ -15,16 +15,16 @@ export class CatService {
         return this.http.get('/todos').map(res => res.json());
     }
 
-    addCat(cat) {
-        return this.http.post("/todo", JSON.stringify(todo), this.options);
+    addCat(todo) {
+        return this.http.post("/todoItem", JSON.stringify(todo), this.options);
     }
 
-    editCat(cat) {
-        return this.http.put(`/todo/${todo._id}`, JSON.stringify(todo), this.options);
+    editCat(todo) {
+        return this.http.put(`/todoItem/${todo._id}`, JSON.stringify(todo), this.options);
     }
 
-    deleteCat(cat) {
-        return this.http.delete(`/todo/${todo._id}`, this.options);
+    deleteCat(todo) {
+        return this.http.delete(`/todoItem/${todo._id}`, this.options);
     }
 
 }

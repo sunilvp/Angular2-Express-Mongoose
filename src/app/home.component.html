@@ -6,44 +6,45 @@
 </div>
 
 <div class="card" *ngIf="!isLoading">
-	<h5 class="card-header">Current cats ({{cats.length}})</h5>
+	<h5 class="card-header">Current Todo's ({{todos.length}})</h5>
 	<div class="card-block">
 		<table class="table table-bordered table-striped">
 			<thead class="thead-default">
 				<tr>
-					<th>Name</th>
-					<th>Age</th>
-					<th>Weight</th>
+					<th>Priority</th>
+					<th>Topic</th>
+					<th>Summary</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
-			<tbody *ngIf="cats.length === 0">
+			<tbody *ngIf="todos.length === 0">
 				<tr>
-					<td colspan="4">There are no cats in the DB. Add a new cat below.</td>
-				</tr>	
+					<td colspan="4">There are no Todos in the DB. Add a new TODO below.</td>
+				</tr>
 			</tbody>
 			<tbody *ngIf="!isEditing">
-				<tr *ngFor="let cat of cats">
-					<td>{{cat.name}}</td>
-					<td>{{cat.age}}</td>
-					<td>{{cat.weight}}</td>
+				<tr *ngFor="let todo of todos">
+					<td>{{todo.priority}}</td>
+					<td>{{todo.topic}}</td>
+					<td>{{todo.summary}}</td>
 					<td>
-						<button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
+						<button class="btn btn-sm btn-warning" (click)="enableEditing(todo)"><i class="fa fa-pencil"></i> Edit</button>
+						<button class="btn btn-sm btn-danger" (click)="deleteCat(todo)"><i class="fa fa-trash"></i> Delete</button>
 					</td>
 				</tr>	
 			</tbody>
 			<tbody *ngIf="isEditing">
 				<tr>
 					<td colspan="4">
-						<form class="form-inline" #form="ngForm" (ngSubmit)="editCat(cat)" style="display:inline">
+						<form class="form-inline" #form="ngForm" (ngSubmit)="editCat(todo)" style="display:inline">
 							<div class="form-group">
-							    <input class="form-control" type="text" name="name" [(ngModel)]="cat.name" placeholder="Name" required>
+							    <input class="form-control" type="text" name="priority" [(ngModel)]="todo.priority" placeholder="Priority" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" type="number" name="age" [(ngModel)]="cat.age" placeholder="Age" min="0" required>
+								<input class="form-control" type="text" name="tpic" [(ngModel)]="todo.topic" placeholder="Topic" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" type="number" name="weight" [(ngModel)]="cat.weight" placeholder="Weight" step="any" min="0" required>
+								<input class="form-control" type="text" name="summary" [(ngModel)]="todo.summary" placeholder="Summary"  required>
 							</div>
 							<button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Save</button>
 						</form>
@@ -61,20 +62,21 @@
 	</div>
 </div>
 
+<!-- this is if for the lower form for adding the content -->
 <div class="card" *ngIf="!isEditing">
-	<h5 class="card-header">Add new cat</h5>
+	<h5 class="card-header">Add new Todo</h5>
 	<div class="card-block">
-		<form class="form-inline" [formGroup]="addCatForm" (ngSubmit)="addCat()" style="text-align:center">
+		<form class="form-inline" [formGroup]="addTodoForm" (ngSubmit)="addCat()" style="text-align:center">
 			<div class="form-group">
-			    <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
+			    <input class="form-control" type="text" name="priority" formControlName="priority" placeholder="Priority">
 			</div>
 			<div class="form-group">
-				<input class="form-control" type="number" name="age" formControlName="age" placeholder="Age" min="0">
+				<input class="form-control" type="text" name="topic" formControlName="topic" placeholder="Topic" >
 			</div>
 			<div class="form-group">
-				<input class="form-control" type="number" name="weight" formControlName="weight" placeholder="Weight" step="any" min="0">
+				<input class="form-control" type="text" name="summary" formControlName="summary" placeholder="Summary" >
 			</div>
-			<button class="btn btn-primary" type="submit" [disabled]="!addCatForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
+			<button class="btn btn-primary" type="submit" [disabled]="!addTodoForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
 		</form>
 	</div>
 </div>
