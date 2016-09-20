@@ -3,7 +3,7 @@ var morgan = require('morgan'); // logger
 var bodyParser = require('body-parser');
 
 var app = express();
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 4000));
 
 app.use('/', express.static(__dirname + '/public'));
 app.use('/scripts', express.static(__dirname + '/../node_modules'));
